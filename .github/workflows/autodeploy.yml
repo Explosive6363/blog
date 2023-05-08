@@ -1,0 +1,13 @@
+name: auto deploy
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: deploy
+        run: |
+          curl -X POST $CF_TRIGGER_ENDPOINT
