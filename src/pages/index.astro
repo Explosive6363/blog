@@ -1,11 +1,11 @@
 ---
-import { NUMBER_OF_POSTS_PER_PAGE } from '../server-constants.ts'
+import { NUMBER_OF_POSTS_PER_PAGE } from '../server-constants'
 import {
   getPosts,
   getRankedPosts,
   getAllTags,
   getNumberOfPages,
-} from '../lib/notion/client.ts'
+} from '../lib/notion/client'
 import Layout from '../layouts/Layout.astro'
 import NoContents from '../components/NoContents.astro'
 import PostDate from '../components/PostDate.astro'
@@ -18,7 +18,7 @@ import Pagination from '../components/Pagination.astro'
 import BlogTagsLink from '../components/BlogTagsLink.astro'
 import styles from '../styles/blog.module.css'
 
-const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
+const [posts, tags, numberOfPages] = await Promise.all([
   getPosts(NUMBER_OF_POSTS_PER_PAGE),
   getRankedPosts(),
   getAllTags(),

@@ -22,7 +22,6 @@ import PostTags from '../../components/PostTags.astro'
 import PostTitle from '../../components/PostTitle.astro'
 import PostBody from '../../components/PostBody.astro'
 import PostRelativeLink from '../../components/PostRelativeLink.astro'
-import BlogPostsLink from '../../components/BlogPostsLink.astro'
 import BlogTagsLink from '../../components/BlogTagsLink.astro'
 import styles from '../../styles/blog.module.css'
 
@@ -33,12 +32,12 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params
 
-const post = await getPostBySlug(slug)
+const post = await getPostBySlug(slug || "")
 if (!post) {
   throw new Error('Post not found. slug: ${slug}')
 }
 
-const [blocks, allPosts, rankedPosts, recentPosts, tags, postsHavingSameTag] =
+const [blocks, allPosts, tags] =
   await Promise.all([
     getAllBlocksByBlockId(post.PageId),
     getAllPosts(),
