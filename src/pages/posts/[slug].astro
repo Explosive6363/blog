@@ -24,6 +24,7 @@ import PostBody from '../../components/PostBody.astro'
 import PostRelativeLink from '../../components/PostRelativeLink.astro'
 import BlogTagsLink from '../../components/BlogTagsLink.astro'
 import styles from '../../styles/blog.module.css'
+import Disqus from '../../components/Disqus.astro'
 
 export async function getStaticPaths() {
   const posts = await getAllPosts()
@@ -109,6 +110,7 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
       <footer>
         <PostRelativeLink prevPost={prevPost} nextPost={nextPost} />
       </footer>
+      <Disqus/>
     </div>
   </div>
 
